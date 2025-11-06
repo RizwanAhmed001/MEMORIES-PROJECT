@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 
 const connectDB = async() => {
  try {
-    mongoose.connect(process.env.MONGO_URI!);
+    mongoose.connect(`${process.env.MONGO_URI}/memories`);
     console.log("Database Connected")
  } catch (error) {
     console.log("Something Went Wrong ", error)

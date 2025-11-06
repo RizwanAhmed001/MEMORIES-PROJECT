@@ -43,9 +43,13 @@ const Memory = () => {
 
   const fetchData = async () => {
     try {
+      console.log("Nikal Lawde");
       const response = await axios.get(backendUrl + "/getMemory", {
-        headers: { token },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
+
       console.log(response);
 
       if (response?.data?.success) {
@@ -62,7 +66,9 @@ const Memory = () => {
   const handleDelete = async (id: string) => {
     try {
       const response = await axios.delete(backendUrl + `/deleteMemory/${id}`, {
-        headers: { token },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       if (response?.data?.success) {
         toast("Memory Deleted Succesfully");
@@ -94,7 +100,9 @@ const Memory = () => {
     event.preventDefault();
     try {
       const response = await axios.post(backendUrl + "/addMemory", formData, {
-        headers: { token },
+       headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       if (response?.data?.success) {
         toast("New Memory Added Succesfully");
@@ -133,7 +141,9 @@ const Memory = () => {
       const response = await axios.put(
         backendUrl + `/updateMemory/${editId}`,
         updateData,
-        { headers: { token } }
+        { headers: {
+          Authorization: `Bearer ${token}`,
+        }, }
       );
       console.log(response);
       if (response.data.success) {
